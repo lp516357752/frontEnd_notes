@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <input type="checkbox" id="first" value="1" v-model="status">
+    <label for="first">有效</label>
+
+
+    <input type="checkbox" id="second" value="2" v-model="status">
+    <label for="second">无效</label>
+    <div>状态：{{status}}</div>
+  </div>
+</body>
+</html>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data() {
+      return {
+        status: [],
+      }
+    },
+  })
+</script>

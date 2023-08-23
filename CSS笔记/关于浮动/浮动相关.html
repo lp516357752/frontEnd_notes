@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #outer{
+      width: 400px;
+      background-color: yellow;
+      overflow: hidden;
+    }
+    .box1{
+      width: 100px;
+      height: 100px;
+      background: red;
+      float: left;
+      
+    }
+    .box2{
+      width: 200px;
+      height: 50px;
+      background: blue;
+      overflow: hidden;/*往右走*/
+      clear: both;/*元素下移，可能会扩充父元素高度*/
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="outer">
+    <div class="box1">
+    </div>
+    <div class="box2">
+    </div>
+  </div>
+  
+</body>
+</html>
+<script>
+  
+</script>

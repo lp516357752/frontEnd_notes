@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //1、典型闭包用法，可以防止污染全局变量
+// const add = (
+//   function (){
+//     var counter = 0;
+//     return function() {
+//       return ++counter;
+//     }
+//   }
+// )();
+// console.log(add);
+// console.log(add());//此后每次调用add()，其入口都是第5行的函数
+// console.log(add());
+
+
+//2、闭包与循环
+//提出问题：
+function foo() {
+  for (var i=0; i<5; i++){
+    setTimeout(() => {
+      console.log(i);
+    },1000)
+  }
+}
+foo()
+
+//解决问题：
+function foo() {
+  var arr = []
+  for (var i=0; i<5; i++){
+    (function(i) 
+    {
+      setTimeout(() => console.log(i), 1000)
+    })(i);
+
+    
+  }
+}
+foo()
+  </script>
+</body>
+</html>

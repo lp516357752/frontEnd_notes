@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset = utf-8">
+  <title>project</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+
+  </div>
+  <script>
+    const num = [100, 102, 150, 210, 10, 65, 105]
+    let counter = num.filter(n => n<100).map(n => n*2).reduce((pre, n) => pre+n)
+    console.log(counter);
+    
+
+    /*   解析  */
+    //1、filter要求必须返回一个bool值
+    //true表示将n返回到新数组，false表示会过滤掉这个n
+    const nums = [100, 102, 150, 210, 10, 65, 105]
+    let newNum = nums.filter(function(n) {
+      return n<100
+    });
+    console.log(newNum);
+    //10,65
+    //2、map,返回一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果
+    let new2 = newNum.map(function(n) {
+      return n * 2
+    });
+    console.log(new2);
+    
+
+    //3、reduce，参数为前一个值和当前值，前一个值为上一次的返回结果，可作为累加器reduce(function, 初始值n)
+    let total = new2.reduce(function(pre, n) {
+      return pre + n//作为下一次调用的pre参数
+    }, 0);
+    console.log(total);
+    
+  </script>
+</body>
+
+</html>

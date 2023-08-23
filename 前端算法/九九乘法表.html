@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .comtainer {
+      width: 800px;
+      text-align: center;
+      margin: 0 auto;
+    }
+    .box {
+      display: inline-block;
+      border: 1px solid black;
+      
+    }
+    .box:hover {
+      background-color: red;
+      
+    }
+  </style>
+  <script>
+    document.write("<div class='comtainer'>")
+      
+    for (let i = 1; i <= 9; i++) {
+      document.write("<div>")
+      for(let k=1;k<=i;k++){
+        document.write("<span class='box'>"+i+"*"+k+ "="+ i*k + "</span>\n")
+      }
+      document.write("<div>")
+    }
+    var spans = document.querySelectorAll("span");
+    spans.forEach(item=>{
+      item.addEventListener('click', function(){
+        this.style.backgroundColor = "blue"
+      })
+    })
+    document.write("</div>")
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

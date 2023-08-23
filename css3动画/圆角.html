@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>圆角边框</title>
+  <style>
+    #box1 {
+      height: 200px;
+      width: 200px;
+      border: 2px solid red;
+      /*设置圆角,完整格式：（水平半径/垂直半径）*/
+      /*在对应位置的数值不相等时，会出现歪斜的圆角*/
+      /*原理就是根据水平半径和垂直半径来在边角上画圆。
+        画圆时半径不相等时，画出来的圆自然也是歪的
+      */
+      border-radius: 10px 20px 30px 40px / 50px 20px 30px 40px;
+      /*border-radius: 10px 20px 代表对角的设置（左上，右上）*/
+      /*border-radius: 10px 代表四个角的设置*/
+    }
+
+    #box2 {/*画圆操作*/
+      height: 200px;
+      width: 200px;
+      border: 2px solid red;
+      
+      border-radius: 100px;
+      /*等效于(相对于盒模型的宽高)*/
+      border-radius: 50%;
+    }
+    #box3 {/*对称颜色圆*/
+      width: 100px;
+      height: 200px;
+      border: 2px solid blue;
+      /* border: 2px solid red; */
+      border-left: 100px solid blue;
+
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+  <div id="box1">
+  </div>
+  <div id="box2">
+  </div>
+  <div id="box3">
+
+  </div>
+</body>
+</html>
+<script>
+  
+</script>

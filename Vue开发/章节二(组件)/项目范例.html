@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset = utf-8">
+  <title>project</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <cpn @getnum="getnum" :num="number"></cpn>
+    <h2>{{childNumber}}</h2>
+  </div>
+
+  <template id="child">
+    <div>
+      <h2>{{theNum}}</h2>
+      <input type="text" v-model="theNum"@input="numChanged">
+    </div>
+  </template>
+
+  <script>
+    const cpn = {
+      template: "#child",
+      data() {
+        return {
+          theNum: this.num
+        }
+      },
+      methods: {
+        numChanged(event) {//最好使用全小写
+          this.$emit('getnum', event.target.value);
+        }
+      },
+      props: {
+        num: {
+          type: Number,
+        }
+      }
+    }
+
+    var vm=new Vue({
+      el:'#app',
+      data: {
+        number: 1,
+        childNumber: 0
+      },
+      methods:  {
+        getnum(value) {
+          this.childNumber=value
+        }
+      },
+      components: {
+        cpn
+      },
+      
+    });
+  </script>
+</body>
+
+</html>

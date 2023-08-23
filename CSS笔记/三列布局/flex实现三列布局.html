@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .container{
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+  }
+  .center{
+    min-height: 400px;
+    flex: 1;/*1 1 auto(没设置时默认0 1 auto，既不放大也不缩小)*/
+    background-color: red;
+  }
+  .left, .right{
+    flex: 0 0 200px;
+    height: 200px;
+    background-color: yellow;
+  }
+</style>
+<body>
+  <div class="container">
+    <div class="left"></div>
+    <div class="center"></div>
+    <div class="right"></div>
+  </div>
+</body>
+</html>

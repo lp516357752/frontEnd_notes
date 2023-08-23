@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset = utf-8">
+  <title>project</title>
+  <script src="../vue.js"></script>
+</head>
+<!-- $children一般用的少-->
+<body>
+  <div id="app">
+    <cpn></cpn>
+    <cpn ref="target"></cpn>
+    <cpn></cpn>
+    <button @click="clicked">这是父组件</button>
+  </div>
+  
+  <template id="child">
+    <div>我是子组件</div>
+  </template>
+
+  <script>
+    var vm=new Vue({
+      el:'#app',
+      data:{
+        message: "hello"
+      },
+      components: {
+        cpn: {
+          template: "#child",
+          methods: {
+            showMessage() {
+              console.log("这是子组件");
+            }
+          }
+        }
+      },
+      methods:{
+        clicked(){
+          //1、$children,只能通过数组找，不方便
+          // this.$children[1].showMessage();
+          //2、$ref(对象类型，默认空，ref='aaa'),通过ref值，类似于id,运用广泛
+          this.$refs.target.showMessage()
+        }
+      },
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./three.js"></script>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  
+</body>
+</html>
+<script>
+  /*
+  * 创建基本场景
+  */
+  var renderer = new THREE.WebGLRenderer();//创建渲染器
+  renderer.setSize( window.innerWidth, window.innerHeight);//设置渲染器的分辨率
+  document.body.appendChild( renderer.domElement);//将渲染器元素放入html文档内，成为<canvas>标签
+  
+  var camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 1, 500)
+  camera.position.set(0, 0, 100);
+  camera.lookAt(0, 0, 0);
+
+  var scene = new THREE.Scene();
+  //创建线条材质
+  var material = new THREE.LineBasicMaterial( {color: "blue"} );
+  //创建点
+  var geometry = new THREE.Geometry();
+  geometry.vertices.push(new THREE.Vector3(-10, 0, 0));
+  geometry.vertices.push(new THREE.Vector3(0, 10, 0));
+  geometry.vertices.push(new THREE.Vector3(10, 0, 0));
+  //使用点和线条材质划线
+  var line = new THREE.Line(geometry, material);
+
+  
+  scene.add(line);//将线条加入场景中
+  renderer.render(scene, camera);//渲染器渲染场景
+
+</script>

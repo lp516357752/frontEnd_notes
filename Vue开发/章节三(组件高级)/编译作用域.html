@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset = utf-8">
+  <title>project</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!--选用的是vue实例中的变量，而不是模版内的变量，所以可以显示-->
+    <cpn v-show="isShow"></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h2>子组件</h2>
+      <!--会选用自己模版内的isshow，所以显示不出来-->
+      <button v-show="isShow">子组件按钮</button>
+    </div>
+  </template>
+  <script>
+    var vm=new Vue({
+      el:'#app',
+      data:{
+        message: "hello",
+        isShow: true
+      },
+      components: {
+        cpn: {
+          template: "#cpn",
+          data() {
+            return {
+              isShow: false
+            }
+          },
+        }
+      },
+      methods:{
+
+      },
+    });
+  </script>
+</body>
+
+</html>

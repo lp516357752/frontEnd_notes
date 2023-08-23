@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset = utf-8">
+  <title>project</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <counter></counter>
+  </div>
+
+  <template id="counter">
+    <div>
+      <h2>当前计数：{{number}}</h2>
+      <button @click="add">+</button>
+      <button @click="decline">-</button>
+    </div>
+  </template>
+
+  <script>
+    Vue.component('counter', {
+      template: counter,
+      //data要求是个函数，且要求返回一个对象。这是为了让每一个实例都可以拥有一份独属于自己的对返回对象的拷贝
+      data() {
+        return {
+          number: 0,
+        }
+      },
+      methods: {
+        add() {
+          this.number++;
+        },
+        decline() {
+          this.number--;
+        }
+      }
+    })
+
+    var vm=new Vue({
+      el:'#app',
+      data:{
+        message: "hello"
+      },
+      methods:{
+
+      },
+    });
+  </script>
+</body>
+
+</html>

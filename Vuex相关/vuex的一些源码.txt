@@ -1,0 +1,24 @@
+一、vuex是如何注入到组件中的？
+export function install (_Vue) {
+  if (Vue && _Vue === Vue) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.error(
+        '[vuex] already installed. Vue.use(Vuex) should be called only once.'
+      )
+    }
+    return
+  }
+  Vue = _Vue
+  applyMixin(Vue)
+}
+
+答：在vue.use(vuex)的时候，调用了vuex中的install方法。install方法会通过判断传入的Vue组件是否已经安装过vuex，安装过
+则会直接退出，不再初始化，如果是非生产环境下还会报错。
+
+applyMixin方法核心是通过Vue.mixin给每一个实例组件混入一个beforecreate钩子函数，其中
+包含了一个vuexinit函数。vuexinit函数实现了，找到根组件，创建一个$store指向$options中的store。
+这样，每一个组件在实例化的时候都会在beforecreate中调用vuexinit方法。
+
+二、vuex中的state和getters如何映射到各个组件实例并响应式更新？
+答：state和getters分别借助了vue的data和computed实现数据监听。实际上是让对store,state和getters的访问变成对vuex的
+vue类对象_vm的访问。

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset = utf-8">
+  <title>project</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!--lazy,用户回车,或者失去焦点后才会重新绑定数值，而不是实时绑定-->
+    输入<input type="text" v-model.lazy="text">
+    <h2>{{text}}</h2>
+
+    <!--number,让输入框的输入变为数值类型，而不是字符串-->
+    <input type="number" v-model.number="num">
+    <h2>{{num}}----{{typeof num}}</h2>
+
+    <!--trim,自动消除输入的左右两边的空格-->
+    <input type="text" v-model.trim="name">
+    <h2>{{name}}</h2>
+  </div>
+  <script>
+    var vm=new Vue({
+      el:'#app',
+      data:{
+        text: '', 
+        num: 20,
+        name: 'test'
+      },
+      methods:{
+
+      },
+    });
+  </script>
+</body>
+
+</html>

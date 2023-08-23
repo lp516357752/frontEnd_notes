@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+      overflow: hidden;
+    }
+    .container{
+      height: 100%;
+      padding: 0 200px;/*左右留出空间*/
+    }
+    .left, 
+    .right {
+      width: 200px;
+      min-height: 200px;
+      background-color: green;
+    }
+    .center{
+      width: 100%;/*占据中间全部空间*/
+      min-height: 400px;
+      background-color: red;
+    }
+    
+    .center, 
+    .left, 
+    .right{
+      float: left;
+    }
+    .left {
+      margin-left: -100%;/*移动到垂直上一行*/
+      position: relative;
+      /*相对定位再左移到父盒子的左内边距位置*/
+      left:-200px
+    }
+    .right{
+      margin-right: -200px;/*原因跟浮动有关，考虑如果不浮动的效果*/
+    }
+  </style>
+</head>
+<body>
+  <div class="container clearfix">
+    <div class="center"></div>
+    <div class="left"></div>
+    <div class="right"></div>
+  </div>
+</body>
+</html>

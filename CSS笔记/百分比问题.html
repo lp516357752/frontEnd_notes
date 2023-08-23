@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <style>
+    .box {
+        width: 800px;
+        height: 500px;
+        background-color: pink;
+        /* overflow: hidden; */
+        /*这行代码解决垂直外边距塌陷问题*/
+    }
+    .one {
+        width: 500px;
+        height: 200px;
+        padding: 50px ;
+        margin: 100px;
+        background-color: green;
+    }
+    .two {
+        width: 50%;
+        /*相对于父元素的宽度 500*50%*/
+        height: 50%;
+        /*相对于父元素的高度 200*50%*/
+        background-color:yellow;
+        padding-left: 10%;
+        /*相对于父元素的宽度 500*10%*/
+        padding-top: 10%;
+        /*相对于父元素的宽度 500*10%*/
+        margin-left: 10%;
+        /*相对于父元素的宽度 500*10%*/
+        margin-top: 10%;
+        /*相对于父元素的宽度 500*10%*/
+    }
+
+</style>
+</head>
+<body>
+<div class="box">
+    <div class="one">
+        <div class="two"></div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+
+</script>

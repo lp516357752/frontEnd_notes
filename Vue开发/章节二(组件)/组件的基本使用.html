@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset = utf-8">
+  <title>project</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <mycpn>
+
+    </mycpn>
+  </div>
+  <script>
+    //ES6: ``符号类似字符串""，方便换行
+    //1、创建组件构造器
+    const cpn = Vue.extend({
+      template: `
+      <div id="app">
+        <h2>测试</h2>
+      </div>`
+    });
+
+    //2、注册组件(全局，可以在多个vue实例中使用)
+    //方法：component(名称,组件)
+    //Vue.component('mycpn', cpn);
+
+    var vm=new Vue({
+      el:'#app',
+      data:{
+        message: "hello"
+      },
+      //局部组件
+      components: {
+        mycpn: cpn,
+      }
+    });
+    
+  </script>
+</body>
+
+</html>

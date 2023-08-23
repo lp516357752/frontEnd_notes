@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+      overflow: hidden;
+    }
+    .container{
+      width: 100%;
+    }
+    .container .center {/*container + left + right形成三个浮动元素*/
+      margin: 0 200px;
+      background-color: red;
+
+      min-height: 400px;
+    }
+    .container, 
+    .left, 
+    .right{
+      float: left;
+    }
+    .left, .right {
+      width: 200px;
+      background-color: yellow;
+    
+      min-height: 200px;
+    }
+
+    .left {
+      margin-left: -100%;
+    }
+    .right{
+      margin-left: -200px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container clearfix">
+    <div class="center"></div>
+  </div>
+    <div class="left"></div>
+    <div class="right"></div>
+</body>
+</html>

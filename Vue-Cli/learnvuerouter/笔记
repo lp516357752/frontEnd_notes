@@ -1,0 +1,44 @@
+一：
+后端渲染：
+后端把渲染好的页面直接发给前端显示
+
+前后端分离：
+ajax请求，jquery开发。
+
+前端渲染：
+spa页面(single page application)
+特点：
+1、在前后端分离的基础上加了一层前端路由
+2、在改变url时，整体页面并不会刷新
+意思是减少请求次数 减小后端压力 让服务器可以服务更多的人，增强高并发，降低成本
+
+二：
+在不改变页面的情况下改变浏览器url地址的方式：
+1、url模式(hash,默认)
+location.hash = url
+
+2、html的history模式
+history.pushState(data,title,url)、储存了url的栈结构；history.replaceState(data,title,url)、直接替换，无法返回
+
+go方法，back() = go(-1)，forward() = go(1)
+
+
+三、vue-router的使用
+1、创建路由组件
+2、在router的index.js中配置路由组件的映射路径
+3、在需要跳转路由的地方添加<router-link>和<router-view>组合标签，router-view用于决定路由组建的渲染位置。
+
+四、URL的组成
+http://localhost:8080/path?uid=1
+协议类型+服务器地址+端口+路径+查询    +  fragment哈希值
+
+
+五、vue生命周期
+beforeCreate:
+created:创建组件完之后
+beforeMounte:
+mounted:将template模板上的东西挂载到dom上后
+beforeUpdate:
+updated:界面发生更新后
+beforeDestroy:
+destroyed:销毁vue实例后

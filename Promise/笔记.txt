@@ -1,0 +1,26 @@
+1、什么时候使用promise？
+当有异步操作时，使用promise对这个异步请求进行封装
+
+2、
+new -> 1、保存一些状态信息  2、执行传入的函数
+在执行传入的回调函数时，会传入两个参数resolve和reject,这两个参数本身就是函数
+
+3、
+synchronization
+asynchronization
+
+sync:同步
+async:异步
+
+4、
+成功时调用resolve，回调then
+失败时调用reject，回调catch
+
+5、reject或者resolve可传可不传
+
+6、回调地狱：1、回调函数层层嵌套。2、本级的异步操作需要获得上一级的异步操作结果
+
+7、解决Promise仍存在回调函数的问题：async/await
+
+8、本层传递的promise状态只会影响到下一层，下层没显式返回的话，下层默认会获得resolved状态的
+promise

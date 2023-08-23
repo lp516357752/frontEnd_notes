@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>测试</button>
+<script>
+  //参数为一个数组，里面包含了多个异步请求Promise对象，如果不是则使用Promise.resolve()处理成Promise对象
+  //仅当都完成后，返回结果数组。如果有一个实例出现rejected，则只返回那个rejected的结果
+  //使用then获取result返回结果数据
+  Promise.all([
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('result1')
+    },1000)
+  }),
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject('result2')
+    },5000)
+  })
+]).then(results => {
+  console.log(results)
+}).catch(err => {
+  console.log(err)
+})
+</script>
+</body>
+</html>

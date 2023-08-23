@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 150px;
+      height: 150px;
+      border: 1px solid blue;
+      margin: 25px auto;
+
+      /*渐变属于图片类型，不能用background-color*/
+      /* 谷歌浏览器*/
+      background-image: -webkit-linear-gradient(red,green);
+      /*火狐浏览器*/
+      background-image: -moz-linear-gradient(red,green);
+      /*opera浏览器*/
+      background-image: -o-linear-gradient(red,green);
+    }
+    #box {
+      /*标准*/
+      background-image: linear-gradient(red,green); /*默认从上到下*/
+    }
+    #box1{
+      background-image: linear-gradient(to top,red,green);/*由下到上*/
+    }
+    #box2{
+      background-image: linear-gradient(to right,red,green);/*由左到右*/
+    }
+    #box3{
+      /*坐标轴，0度在上，旋转顺序为顺时针*/
+      /*意义也是由red到green，到45度角，green在45度角*/
+      background-image: linear-gradient(45deg,red,green);/*旋转45度,由左下到右上*/
+      /*等同于*/
+      background-image: linear-gradient(to right top,red,green);/*旋转45度,由左下到右上*/
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+  </div>
+  <div id="box1">
+  </div>
+  <div id="box2">
+  </div>
+  <div id="box3">
+  </div>
+</body>
+</html>

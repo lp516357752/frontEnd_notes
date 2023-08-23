@@ -1,0 +1,11 @@
+1、在创建vue3项目时，会出现是否以当前项目副本作为以后创建项目时的模板。
+若要删除一些已储存的副本，可以访问User/pc/.vuerc文件删除目标对象。(run command)
+
+2、vue ui 指令
+打开可视化vue配置管理
+
+3、配置文件去哪儿了？
+  （1）：合并到了node_modules里面的包@vue/c;o-service/webpack.config.js中，
+  具体其他相关自行查看。
+  （2）：vue ui可视化操作
+  （3）：创建vue.config.js文件(名字固定)，自行配置，脚手架会自动合并你的额外配置

@@ -1,0 +1,58 @@
+<html>
+<head>
+<style type="text/css">
+  .box {
+    border: 1px solid black;
+  }
+  .box::after{
+    content: "";
+    clear: left;
+    display: block;
+    visibility: hidden;
+  }
+  .div1 {
+    width: 500px;
+    height: 120px;
+    background: red;
+    float: left;
+  }
+  .div2 {
+    width: 450px;
+    height: 200px;
+    background: green;
+    float: left;
+  }
+  .div3 {
+    width: 350px;
+    height: 250px;
+    background: blue;
+    float: left;
+    
+  }
+  .div4 {
+    width: 400px;
+    height: 220px;
+    background: black;
+    clear: left;
+  }
+</style>
+<script>
+  
+</script>
+</head>
+
+<body>
+  <!-- <div class="div1">
+  </div>
+  <div class="div2">
+  </div>
+  <div class="div3">
+  </div>
+  <div class="div4">
+  </div> -->
+  <div class="box"><!--可以看出，父元素塌陷的原因就是因为元素浮动导致父元素发现自己内部没有元素，就无法有高度撑起-->
+    <div class="div1"></div>
+    <div class="div2"></div>
+  </div>
+</body>
+</html>

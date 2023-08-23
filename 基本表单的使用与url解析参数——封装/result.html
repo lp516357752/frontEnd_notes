@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset = utf-8">
+  <title>Thanks</title>
+  
+  <style>
+    header {
+      text-align: center;
+      font-weight: bold;
+      font-size: large;
+    }
+    div {
+      display: inline;
+    }
+  </style>
+  <script>
+      var a = 3;
+      for(var i=0;i<1;i++){
+        a = 1
+        function a() {
+          
+        }
+        a = 4
+        console.log(a);
+      }
+      console.log(a);
+        
+  </script>
+</head>
+
+<body>
+  <header>谢谢您注册</header>
+  <hr>
+  姓氏:<div id="firstname">123</div><br>
+  名字:<div id="lastname"></div><br>
+  年龄:<div id="age"></div><br>
+  是否被雇佣:<div id="isEmployed"></div><br>
+  你是怎么知道这个网站的?:<div id="answer"></div><br>
+  附注:
+  <div id="note"></div>
+
+    <script>
+      var answers = "";
+      var index = 0;
+      let paramstr1 = window.location.search;
+      let paramstr2 = paramstr1.substr(1);
+      let params = paramstr2.split('&');
+      var divs=document.getElementsByTagName('div');
+      for(var i=0;i<params.length;i++){
+        if(i<4){
+          divs[i].textContent = decodeURI(params[i].split('=')[1])
+        }
+        if(params[i].split('=')[0]=="answer"){
+          answers += decodeURI(params[i].split('=')[1])+' '
+        }
+        if(params[i].split('=')[0]=="note"){
+          divs[5].textContent = decodeURI(params[i].split('=')[1])
+        }
+      }
+      document.getElementById("answer").textContent = answers
+    </script>
+</body>
+
+</html>

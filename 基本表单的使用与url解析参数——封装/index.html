@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset = utf-8">
+  <title>邮箱账户信息</title>
+  <style>
+    body {
+      background-color: lavender;
+    }
+    header {
+      color: green;
+      text-align: center;
+      font-weight: bold;
+      font-size: large;
+    }
+    .question {
+      font-family: '隶书';
+      color: blue;
+      font-weight: bold;
+    }
+  </style>
+  <script>
+    function revision(form){
+      if(form.firstname.value==""||form.age.value==""||form.lastname.value==""){
+        alert("请填写完整");
+        return false;
+      }
+      if(form.isEmployed.value==""){
+        alert("请填写完整");
+        return false;
+      }
+      let checkbox = document.getElementsByName("answer")
+      for(let i=0;i<checkbox.length;i++){
+        if(i==(checkbox.length-1)&&checkbox[i].checked==false){
+          alert("请填写完整");
+          return false;
+        }
+        if(checkbox[i].checked==false){
+          continue;
+        }
+        break;
+      }
+      if(form.note.value==""){
+        alert("请填写完整")
+        return false;
+      }
+      return true;
+    }
+  </script>
+</head>
+
+<body>
+  <form action="result.html" onsubmit="return revision(this)">
+    <header>填写邮件帐户信息</header>
+    <hr>
+    姓氏:<input type="text"name="firstname"><br>
+    名字:<input type="text"name="lastname"><br>
+    年龄:<select name="age" id="age">
+      <option>20</option>
+      <option>26</option>
+    </select><br>
+    是否被雇佣:
+    <input type="radio"name="isEmployed" id="yes"value="是">是
+    <input type="radio"name="isEmployed" id="no"value="否">否
+    <div class="question">你是怎样知道这个网站的？</div>
+    <br>
+    <input type="checkbox" name="answer" id="newspaper" value="报纸">报纸
+    <input type="checkbox" name="answer" id="magazine" value="杂志">杂志
+    <input type="checkbox" name="answer" id="friend" value="朋友">朋友
+    <input type="checkbox" name="answer" id="website" value="网站">网站
+    <br>
+    附注：<textarea name="note" id="note" cols="16" rows="4"style="resize:none;overflow-y:visible"></textarea>
+    <br>
+    <input type="submit" name="submit" id="submit">
+    <input type="reset">
+  </form>
+</body>
+
+</html>

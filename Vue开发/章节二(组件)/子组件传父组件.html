@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset = utf-8">
+  <title>project</title>
+  <script src="../vue.js"></script>
+</head>
+<!--子组件中在方法中通过$emit(事件名,参数)发送事件-->
+<!--父组件通过v-on(@对应事件名)来监听子组件的事件-->
+<body>
+  <div id="app">
+    <cpn @item-clicked="printItem"></cpn>
+  </div>
+
+  <template id="child">
+    <div>
+      <button v-for="(item, index) in categories" :key="index"
+      @click="btnClicked(item)"
+      >
+        {{item.name}}
+      </button>
+    </div>
+  </template>
+  <script>
+    const cpn = {
+      template: '#child',
+      data() {
+        return {
+          categories: [
+            {id: 'a', name: '热门'},
+            {id: 'b', name: '办公'},
+            {id: 'c', name: '家电'}
+          ]
+        }
+      },
+      methods: {
+        btnClicked(item) {
+          this.$emit('item-clicked', item)//可以不传参数
+        }
+      },
+    }
+
+    var vm=new Vue({
+      el:'#app',
+      data: {
+        message: "hello"
+      },
+      methods: {
+        printItem(item) {
+          console.log(item.name);
+        }
+      },
+      components: {
+        cpn,
+      },
+    });
+  </script>
+</body>
+
+</html>

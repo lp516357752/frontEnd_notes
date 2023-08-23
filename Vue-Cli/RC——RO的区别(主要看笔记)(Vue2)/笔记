@@ -1,0 +1,38 @@
+1、Vue的运行过程
+runtime-compiler：
+  template——>解析——>抽象语法树ast——>编译——>render函数——>虚拟dom树——>渲染——>UI页面
+
+runtime-only:(性能更高，代码量更少)，推荐使用
+    render函数——>虚拟dom树——>UI页面
+tips：那么，这个版本的Vue不会接触template的解析，那.Vue文件代码中的template
+怎么办呢？
+答案：是由vue-template—compiler(在下载vue-loader的时候，额外下载的一个插件,
+下载的命令为：npm install vue-loader vue-template—compiler -s -d)自动解析的。
+所以在import引用.Vue文件的时候，引用的不再是那个文件，而是已经解析好了的render
+函数形式(组件对象)。
+所以说，推荐直接使用runtime-only版本，因为上述插件已经帮我做好了vue运行过程的
+前两步了。就是说用了runtime-only这种方式会把所有导入的vue组件都会变成一个对象，
+并且对象里没有template相关的东西，取而代之的是由vue-template-compiler解析后的
+render函数，从而使得性能更高。
+
+
+2、runtimeOnly版本
+new Vue({
+  el: '#app',
+  components: {
+    cpn
+  },
+  render: //h => h(App)
+  //上函数作用等同于如下
+  //即createElement=h函数
+  //createElement(标签，标签属性，内容)
+  //1、基础用法
+  // function(createElement){
+  //   return createElement('h2', {class:'box'}, 
+  //   ['测试',createElement('button',['按钮'])])
+  // }
+  //2、传入组件h
+  function(h){
+    return h(cpn)
+  }
+})

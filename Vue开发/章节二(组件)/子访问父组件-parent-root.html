@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset = utf-8">
+  <title>project</title>
+  <script src="../vue.js"></script>
+</head>
+<!-- 访问父组件$parent用的少-->
+<body>
+  <div id="app">
+    <cpn></cpn>
+  </div>
+
+  <template id="child1">
+    <div>
+      <ccpn></ccpn>
+    </div>
+  </template>
+  <template id="child2">
+    <div>
+      <h1>我是第ccpn子组件</h1>
+      <button @click="clicked">这是ccpn组件</button>
+    </div>
+  </template>
+
+  <script>
+    var vm=new Vue({
+      el:'#app',
+      data:{
+        message: "hello"
+      },
+      components: {
+        cpn: {
+          template: "#child1",
+          components: {
+            ccpn: {
+              template: "#child2",
+              methods: {
+                clicked() {
+                  //1、访问上一层父组件
+                  //console.log(this.$parent);
+                  //2、访问根组件
+                  console.log(this.$root);
+                  
+                }
+              }
+            }
+          }
+        },
+        
+      },
+      methods:{
+        show(){
+          console.log("这是父组件");
+        }
+      },
+    });
+  </script>
+</body>
+
+</html>

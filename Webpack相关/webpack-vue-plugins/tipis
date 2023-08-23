@@ -1,0 +1,31 @@
+一、
+  npm run build(本地打包，需要自行配置)
+  没有配置json文件时，在直接使用命令（webpack）会默认同cmd一样使用全局的命令（webpack），
+  如果希望优先使用本地的webpack，则需要在package.json文件的scripts脚本里配置
+
+二、
+  scripts里面的命令，会优先在本地的node_modules/bin中寻找对应的包，如未找到才会在全局中寻找
+
+三、
+  webpack打包并不是畅通无阻，对于一些css、scss、less、vue文件，需要webpack配置对应的loader，才能打包。
+  步骤：1、npm下载对应的loader。2、在webpack.config.json中配置modules。
+  访问中文官方，在loader中寻找需要的
+
+四、
+  因为vue在发布版本时，发布了两种版本：runtime-only以及runtime-compiler，只有后者才支持解析组件(正常解析vue语句)。
+  所以在配置webpack支持打包vue代码时，除了下载好vue，还需要再webpack.config.js文件里面设置跟entry、output、module同级的
+  一个属性resolve，在其中设置别名属性：alias，值为：'vue/dist/vue.esm.js'。设置在引用vue文件时，引用的是支持runtime-compiler的vue文件。
+
+  当需要打包.vue文件时(注意，这次是直接是文件)，则需要加载vue的相关loader：vue-loader vue-template-compiler,后者是runtime-only的核心
+  功能，将template编译成render函数。
+
+五、
+  因为发布项目时，一般index.html主文件是需要的，但webpack并不会打包该文件，那么需要下载该插件 html-webpack-plugin。该插件
+  能够自动打包html文件并且自动添加script标签，添加最终合并的js文件。
+
+六、配置文件的分离须知
+  步骤：
+  1、npm下载对应的依赖webpack-merge。
+  2、写好需要分离的配置文件，一般为base，dev，product和other .js文件。然后在package.json中
+  配置build，dev（如果有）的路径，指定到该配置文件。
+  3、一般该插件为默认打包到配置文件所在目录下，所以需要在主配置文件base中重新制定主出口文件output的路径到自己的目标打包文件目录

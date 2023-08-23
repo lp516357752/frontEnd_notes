@@ -1,0 +1,28 @@
+{
+  "name": "vuethree",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "node-dev ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-jwt": "^6.0.0",
+    "http-errors": "~1.6.3",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "~1.9.1",
+    "multiparty": "^4.2.2",
+    "mysql": "^2.18.1",
+    "pug": "2.0.0-beta11",
+    "redis": "^3.1.2",
+    "request": "^2.88.2",
+    "svg-captcha": "^1.4.0"
+  },
+  "devDependencies": {
+    "node-dev": "^6.7.0"
+  }
+}

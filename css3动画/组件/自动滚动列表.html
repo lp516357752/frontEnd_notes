@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    li {
+      margin-top: 10px;
+      
+    }
+    #ul_list {
+      margin: 0;
+      padding: 0;
+      width: 400px;
+      height: 100px;
+      overflow: hidden;
+      background-color: gray;
+    }
+  </style>
+</head>
+<body>
+    <ul id="ul_list">
+
+    </ul>
+</body>
+</html>
+<script>
+  const NOTICE_LIST = [
+    '恭喜罗X获得特等奖 别墅一套',
+    '恭喜张4获得一等奖 跑车一辆',
+    '恭喜张5获得二等奖 华为手机一部',
+    '恭喜张6获得二等奖 华为手机一部',
+    '恭喜张7获得三等奖 小米手机一部',
+    '恭喜张8获得三等奖 小米手机一部',
+    '恭喜张9获得三等奖 小米手机一部',
+  ]
+  let flag = false;
+  let list = document.querySelector("#ul_list");
+  let start =0;
+  let lastTime = performance.now();//滚动间隔
+  let addtime = lastTime;//增加数据的间隔
+  let list_height = ul_list.offsetHeight;
+  let scrollHeight = 0;
+  let scrollTop = 0;
+  function init(arr) {
+    let df = null;
+    return function() {
+      var div = document.createElement("div")
+      df = document.createDocumentFragment();
+
+      for(let i=0;i<arr.length;i++) {
+        var li = document.createElement('li');
+        li.innerHTML = arr[i];
+        df.appendChild(li)
+      }
+      div.appendChild(df)
+      ul_list.appendChild(div)
+      scrollHeight = list.scrollHeight;
+    }
+    
+  }
+  let autoScroll = init(NOTICE_LIST)
+  autoScroll();
+  let rootScrollHeight = list.scrollHeight;
+  list.addEventListener("mouseenter",function() {
+    flag = true;
+  })
+  list.addEventListener("mouseleave",function() {
+    flag = false;
+    requestAnimationFrame(scr)
+  })
+  list.addEventListener("scroll", function(){
+    if(this.scrollTop + list_height >= scrollHeight-100) {
+      autoScroll()
+      // list.removeChild(list.firstChild)
+      // scrollHeight = list.scrollHeight
+    }
+  })
+  let scr = function(time) {
+    lastTime = time
+    start+=0.5
+    list.scrollTo(0,start);
+    if(!flag) {
+      requestAnimationFrame(scr)
+    }
+    if(time-addtime>2000) {
+      addtime = time
+    }
+  }
+  requestAnimationFrame(scr)
+
+</script>

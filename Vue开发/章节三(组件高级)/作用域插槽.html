@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset = utf-8">
+  <title>project</title>
+  <script src="../vue.js"></script>
+</head>
+<!--对于在使用模板的时候，里面如果使用了变量，那么会在vue实例中寻找，而不是组件中（编译作用域）-->
+<body>
+  <div id="app">
+    <!--为了获得子组件的数据-->
+    <!--作用域插槽：父组件可以替换插槽的标签，但内容还是可以由子组件提供。如下：-->
+    <!--如父组件想通过不同形式(标签形式)展示子组件里的变量内容-->
+    <cpn>
+<!--高版本(2.5以上)template也可以用div包裹。slot-scope=""是固定的-->
+      <template slot-scope="childdata">
+        <span >{{childdata.data.join('-')}}</span>
+      </template>
+    </cpn>
+    <cpn></cpn>
+  </div>
+
+<!--当然，如果是模板中使用变量，则会有现在模板中寻找（编译作用域）-->
+  <template id="cpn">
+    <div>
+      <slot :data="arr"><!--携带数据,数据名data可以自定义-->
+        <ul>
+          <li v-for="(item, index) in arr" :key="index">{{item}}</li>
+        </ul>
+      </slot>
+    </div>
+  </template>
+
+  <script>
+    var vm=new Vue({
+      el:'#app',
+      data:{
+        message: "hello"
+      },
+      components: {
+        cpn: {
+          template: "#cpn",
+          data() {//子组件数据
+            return {
+              arr: ["test", "exam", "ball"],
+            }
+          },
+        }
+      },
+      methods:{
+
+      },
+    });
+  </script>
+</body>
+
+</html>

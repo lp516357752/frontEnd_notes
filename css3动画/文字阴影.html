@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box1 {
+      font-size: 50px;
+      text-align: center;
+      margin-top: 200px;
+      color: green;
+
+      /*水平偏移-垂直偏移-模糊度-颜色*/
+      /*允许加多个阴影，逗号分隔*/
+      text-shadow: 3px 3px 2px red,5px 5px 2px blue;
+
+    }
+    /*利用正负值模拟光照射的角度效果*/
+    #box2{
+      font-size: 50px;
+      text-align: center;
+      margin-top: 200px;
+      color: green;
+
+      /*水平位移-垂直位移-模糊度-颜色*/
+      text-shadow: -5px -7px 2px red;
+    }
+  </style>
+</head>
+<body>
+  <div id="box1">
+    测试一下
+  </div>
+  <div id="box2">
+    测试一下
+  </div>
+</body>
+</html>

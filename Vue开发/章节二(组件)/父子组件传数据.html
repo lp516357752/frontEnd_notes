@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset = utf-8">
+  <title>project</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!--一般用v-bind传递父组件信息给子组件-->
+    <cpn :cmovies="movies" :cmessage="message"></cpn>
+  </div>
+
+  <template id="child">
+    <div>
+      <ul>
+        <li v-for="(item, index) in cmovies" :key="index">{{item}}</li>
+      </ul>
+      <h2>{{props1}}</h2>
+    </div>
+  </template>
+  <script>
+    const cpn = {//子组件
+      template: child,
+      //props: ['cmovies', 'cmessage'],//需要接收的数据,不常用数组形式
+      props: {
+        //1、对象写法，类型限制(类型验证),也可以为自定义的类型(Person)
+        cmovies: Array,
+        cmessage: String,
+        
+        //2、提供默认值
+        data: {
+          type: [String, Number],//允许多种类型
+          default: 'abc',
+          //required: true,//在使用该组件时，必须给该属性(data)传值
+        },
+        //3、特殊的对象和数组类型
+        cdata: {
+          type: Array,//默认对象或者数组类型时，必须是一个对象返回数组
+          default() {
+            return [1, 2, 3]
+          } 
+        },
+
+        //4、自定义验证函数
+        props1:  {
+          validator(value) {//函数名定死为validatior
+            //该值value必须匹配下列值中
+            return ['abc', '123', 'test'].indexOf(value) !== -1;
+          }
+        }
+      },
+
+      data() {
+        return {}
+      }
+    }
+
+    var vm=new Vue({
+      el:'#app',
+      data:{
+        message: "hello",
+        movies: [123, 'abd', 'gas']
+      },
+      components: {
+        cpn
+      },
+      methods:{
+
+      },
+    });
+  </script>
+</body>
+
+</html>

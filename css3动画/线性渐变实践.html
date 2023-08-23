@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      margin: 200px 200px;
+      float: left;
+      
+      position: relative;
+    }
+    .box>div {
+      padding: 10px 20px;
+      float: left;
+      color: #fff;
+      font-weight: bold;
+    }
+    
+    .box>div:first-child {
+      background-color: #009764;
+      border-radius: 10px 0 0 0;
+    }
+    .box>div:nth-child(2) {
+      background-color: #da1941;
+    }
+    .box>div:nth-child(3) {
+      background-color: #eab719;
+    }
+    .box>div:last-child {
+      background-color: blue;
+      border-radius: 0 10px 0 0;
+    }
+      
+    .box>div>div {
+      position: absolute;
+      text-align: center;
+      padding: 20px;
+      width: 248px;
+      height: 80px;
+
+      border-radius: 0 0 10px 10px;
+
+      top: 40px;
+      left: 0;
+    }
+    .box>div:first-child>div {
+      background: linear-gradient(to right,#749187,#009764);
+      display: block;
+    }
+    .box>div:nth-child(2)>div {
+      background: linear-gradient(to right,#d897a4,#da1941);
+      display: none;
+    }
+    .box>div:nth-child(3)>div {
+      background: linear-gradient(to right,#dfcd97,#eab719);
+      display: none;
+    }
+    .box>div:last-child>div {
+      background: linear-gradient(to right,rgb(159, 159, 255),blue);
+      display: none;
+    }
+    /*特别注意一下选择器的效果！！！！*/
+    .box>div:hover>div {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div>
+      免费
+      <div>
+        <span>免费</span>
+      </div>
+    </div>
+    <div>
+      付费
+      <div>
+        <span>付费</span>
+      </div>
+    </div>
+    <div>
+      会员
+      <div>
+        <span>会员</span>
+      </div>
+    </div>
+    <div>
+      永久
+      <div>
+        <span>永久</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

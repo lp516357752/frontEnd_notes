@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset = utf-8">
+  <title>project</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <! v-model具备name的选择互斥功能>
+    <label for="male">
+      <input type="radio" id="male" value="男" v-model="sex">男
+    </label>
+    <label for="female">
+      <input type="radio" id="female" value="女" v-model="sex">女
+    </label>
+    <h2>{{sex}}</h2>
+    <br><br>
+
+    <label for="hobby">
+      <input type="checkbox" value="篮球" v-model="hobby">篮球
+      <input type="checkbox" value="足球" v-model="hobby">足球
+      <input type="checkbox" value="乒乓球" v-model="hobby">乒乓球
+    </label>
+    <h2>爱好有：{{hobby}}</h2>
+    <br>
+    <select name="fruit" v-model="fruits" multiple>
+      <option value="香蕉">香蕉</option>
+      <option value="芒果">芒果</option>
+      <option value="苹果">苹果</option>
+      <option value="葡萄">葡萄</option>
+    </select>
+    <h2>你选择的水果有:{{fruits}}</h2>
+    <br>
+    <br>
+    <! 关于值绑定>
+    <label v-for="item in originHobbys" :for="item">
+      <input type="checkbox" v-model="selectHobby" :id="item" :value="item">{{item}}
+    </label>
+    <h2>选择的运动有{{selectHobby}}</h2>
+  </div>
+  <script>
+    var vm=new Vue({
+      el:'#app',
+      data:{
+        message: "hello",
+        sex: '男',
+        hobby: [],
+        fruits: [],
+        originHobbys: ["篮球", "足球", "羽毛球"],
+        selectHobby: []
+      },
+      methods:{
+
+      },
+    });
+  </script>
+</body>
+
+</html>

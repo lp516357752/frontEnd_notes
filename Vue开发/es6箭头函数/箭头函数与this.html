@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset = utf-8">
+  <title>project</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+
+  </div>
+  <script>
+    setTimeout(function(){
+      console.log(this)//此处应指向window
+    })
+    setTimeout(()=>{
+      console.log(this)//此处应指向window
+    })
+
+    const obj = {
+      a() {
+      setTimeout(function(){
+        console.log(this)//此处应指向window
+      })
+
+      setTimeout(()=>{
+        console.log(this)//此处应指向obj，并不是因为obj.a();
+      })
+    }
+  }
+  obj.a()
+  //结论：箭头函数的this引用的是最近作用域中的this，向外层作用域一层层查找this，
+  //直到找到最近的有this定义的那一层，以那一层为自己的this
+
+
+  const b = {
+    b() {
+      setTimeout(function(){
+        setTimeout(function(){
+          console.log(this);//window
+        })
+        setTimeout(()=>{
+        console.log(this);//window，找到了外层settimeout，外层的this为window
+      })
+      })
+
+      setTimeout(()=>{
+        setTimeout(function(){
+          console.log(this);//window
+        })
+        setTimeout(()=>{
+          console.log(this);//b
+        })
+      })
+    }
+    
+  }
+  b.b()
+
+  
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+302在新的http1.1中应当说被扩充为303和307
+
+303：会把用户的POST请求重定向为GET
+307：会询问用户是否在新的URI上，重新发送POST请求
+
+链接：https://www.cnblogs.com/cswuyg/p/3871976.html

@@ -1,0 +1,44 @@
+<html>
+<head>
+<style type="text/css">
+/* @import url("test.css"); */
+
+
+.box {
+  font-size: 0;
+}
+.aa {display: inline;font-size: 12px;}
+.bb {display: inline-block;font-size: 12px;}
+.cc {display: block;font-size: 12px;}
+
+.right{background-color: yellow;height: 50px;width: 200px;clear: both;}
+.left{float:left;height: 100px;background-color: red;width: 100px;}
+.clear{
+  overflow: hidden;
+  background-color: gray;
+  width: 300px;
+}
+</style>
+<script>
+  
+</script>
+</head>
+
+<body>
+  <div class="clear"><!--父元素-->
+    <div class="left"></div>
+    <div class="right"></div>
+    <!--增加一个空标签-->
+    <!-- <br style="clear:both;"> -->
+    <div class="footer">受影响对象</div>
+  </div>
+  
+<div class="box"><!--设置父元素字体大小，去除行内块元素之间的空隙-->
+  <span class="aa">内联元素。</span>
+  <span class="bb">行内块元素1</span>
+  <span class="bb">行内块元素2</span>
+  <span class="cc">块元素</span>
+</div>
+
+</body>
+</html>

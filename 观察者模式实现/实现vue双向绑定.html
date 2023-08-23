@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    
+  </style>
+</head>
+<body>
+  姓名：<span id="spanName"></span>
+  <br>
+  <input type="text"id="inputName">
+
+</body>
+</html>
+<!--ES5：实现方式-->
+<script>
+  /*
+  * 1、需要对原始数据进行克隆
+  * 2、需要分别给对象中的每一个属性进行监听设置
+  */
+  let obj = {name: ''};//用于监听
+  let newObj = JSON.parse(JSON.stringify(obj));//用于变动值
+
+  Object.defineProperty(obj, 'name',{
+    get(){
+      return newObj.name;
+    },
+    set(val){
+      if(val===newObj.name) return;
+      
+      newObj.name = val;
+      observer();
+    }
+  });
+  
+  inputName.oninput = function(){//监听输入
+    obj.name = this.value;
+  }
+
+  function observer(){
+    spanName.innerHTML = obj.name;
+    inputName.value = obj.name
+  }
+  
+</script>
+<!--ES6：Proxy实现方式-->
+<!-- <script>
+  /*
+  * 1、不再需要另外设置对象
+  */
+  let obj = {}
+  obj = new Proxy(obj,{
+    get(target, prop){
+      return target[prop]
+    },
+    set(target, prop, value){
+      target[prop] = value;
+      observer()
+    }
+  })
+
+  inputName.oninput = function(){//监听输入
+    obj.name = this.value;
+  }
+
+  function observer(){
+    spanName.innerHTML = obj.name;
+    inputName.value = obj.name
+  }
+</script> -->

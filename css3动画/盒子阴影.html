@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box1 {
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+
+      /*水平偏移-垂直偏移-模糊半径-模糊外延半径(向外渐变延伸长度)-(内置阴影，可以在任何位置)*/
+      /* box-shadow: 5px 5px 10px red; */
+      /* box-shadow: 5px 5px 10px 10px red; */
+      box-shadow: inset 10px 10px 5px green;/*向内延申*/
+    }
+    #box2 {
+      width: 100px;
+      height: 40px;
+      background: green;
+      margin: 100px;
+      line-height: 40px;
+      color: #ffffff;
+      font-weight: bold;
+      text-align: center;
+
+      border-radius: 10px;
+      /*彩虹效果*/
+      box-shadow: 1px 1px 3px 10px yellow,1px 1px 3px 15px red,1px 1px 3px 20px green;
+    }
+    #box2:active {
+      box-shadow: 1px 1px 10px #000 inset;
+    }
+  </style>
+</head>
+<body>
+  <div id="box1">
+  </div>
+
+  <div id="box2">
+    点击
+  </div>
+</body>
+</html>

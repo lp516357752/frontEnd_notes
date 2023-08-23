@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script>
+  
+var a = 10;
+var b = 11;
+with(window) {
+  var b = a;
+  var a = a+1;
+  console.log(a,b)
+}
+console.log(a,b)
+</script>

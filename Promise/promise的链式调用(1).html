@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  //参数 -> 函数
+  //链式编程
+
+  new Promise((resolve, reject) => {
+    //第一次请求
+    setTimeout(() => {
+      resolve()
+    }, 1000)
+  }).then(() => {
+    //第一次处理代码
+    console.log(123);
+    
+    return new Promise((resolve, reject) => {
+      //第二次请求
+      setTimeout(() => {
+        resolve()
+      }, 1000)
+    }).then(() => {
+      //第二次处理代码
+      console.log("廖鹏");
+
+      return new Promise((resolve, reject) => {
+        //第三次请求
+        setTimeout(() => {
+          resolve()
+        }, 1000)
+      }).then(() => {
+        //第三次处理代码
+        console.log("学习");
+      })
+    })
+  })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+一、
+  npm run build(本地打包，需要自行配置)
+  没有配置json文件时，在直接使用命令（webpack）会默认同cmd一样使用全局的命令（webpack），
+  如果希望优先使用本地的webpack，则需要在package.json文件的scripts脚本里配置
+
+二、
+  scripts里面的命令，会优先在本地的node_modules/bin中寻找对应的包，如未找到才会在全局中寻找
+
+三、
+  webpack打包并不是畅通无阻，对于一些css、scss、less、vue文件，需要webpack配置对应的loader，才能打包。
+  步骤：1、npm下载对应的loader。2、在webpack.config.json中配置modules。
+  访问中文官方，在loader中寻找需要的
+
+四、
+  安装node基础包，初始化项目的命令：npm init

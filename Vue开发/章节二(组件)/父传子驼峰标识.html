@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset = utf-8">
+  <title>project</title>
+  <script src="../vue.js"></script>
+</head>
+<!--父传子使用的是v-bind进行传值，然后子组件用props接收-->>
+<!--驼峰就是myProject的大小写规则-->
+<!--标识就是短连接语法，在需要大写的词前面加上 -  然后接小写单词   -->
+<body>
+  <div id="app">
+    <cpn :cInfo="info"></cpn><!--如果直接用cInfo,则会传来空对象，无法识别驼峰-->>
+    <cpn :c-info="info"></cpn>
+  </div>
+
+  <template id="child">
+    <div>
+      <h2>{{cInfo}}</h2>
+    </div>
+  </template>
+
+  <script>
+    const cpn = {
+      template: '#child',
+      props: {
+        cInfo: {
+          type: Object,
+          default() {
+            return {}
+          }
+        }
+      }
+    }
+
+    var vm=new Vue({
+      el:'#app',
+      data:{
+        message: "hello",
+        info: {
+          name: '廖鹏',
+          age: 20
+        }
+      },
+      methods:{
+
+      },
+      components: {
+        cpn
+      }
+    });
+  </script>
+</body>
+
+</html>

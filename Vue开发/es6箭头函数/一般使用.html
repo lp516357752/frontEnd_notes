@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset = utf-8">
+  <title>project</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+
+  </div>
+  <script>
+    //定义函数的方式
+    //1、function
+    const a = function() {
+
+    }
+    //2、对象自变量定义
+    const obj = {
+      b() {
+
+      }
+    }
+    //3、箭头函数
+    //多参数
+    const test1 = (num1 ,num2) => {
+      return num1 + num2
+    }
+    //单参数
+    const test2 = num => {
+      return num * num
+    }
+    //只有一行代码时,多行正常写
+    const test3 = (num) => num * num//有返回
+    const test4 = () => console.log("测试");//无返回时，返回undefined
+    
+  </script>
+</body>
+
+</html>
