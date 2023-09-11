@@ -1,7 +1,7 @@
 <template>
   <div class="title">
     {{message}}
-    <button @click='clicked'>改变</button>
+    <button class="test" @click='clicked'>改变</button>
     <Cpn></Cpn>
   </div>
   
@@ -24,8 +24,11 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style lang="less" scoped>
   .title {
     color: blue;
+    &.test {
+      background-color: red;
+    }
   }
 </style>
