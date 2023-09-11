@@ -37,7 +37,7 @@ tree-shaking所依赖的一些es6 module特性：
 }
 ```
 
-项目使用了css-loader并导入了css文件时，应把css文件加入到不需要webpack删除代码文件数组中。
+项目使用了css-loader并导入了css文件时，应把css文件加入到不需要webpack删除代码文件数组中。**因为编译css文件时，会被转译为一个存在css规则集的JS模块。在导入该css文件的模块中一般仅仅导入了而不会去调用，因此被shake掉了**
 
 
 

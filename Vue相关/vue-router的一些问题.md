@@ -29,7 +29,7 @@ hash模式，回退到一个不存在的页面并不会产生404页面未找到�
 
 **进度**
 
-- [x] 浏览器的hash和history
+- [ ] 浏览器的hash和history
 - [ ] vue-router的挂载相关
 
 ---
@@ -51,7 +51,7 @@ hash模式，回退到一个不存在的页面并不会产生404页面未找到�
 ```javascript
  Vue.mixin({
       beforeCreate: function beforeCreate () {
-        if (isDef(this.$options.router)) {//判断是否传入了router，isD efined?
+        if (isDef(this.$options.router)) {//判断是否传入了router，isDefined?
           this._routerRoot = this;//获得Vue根组件
           this._router = this.$options.router;//获取router组件
           this._router.init(this);//初始化router

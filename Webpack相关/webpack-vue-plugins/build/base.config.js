@@ -2,6 +2,7 @@ const path = require('path')//node包，获取当前文件的目录
 const VueLoaderPlugin = require('vue-loader/lib/plugin')//获取vue-loader的扩展包
 const webpack = require('webpack')
 const htmlWebpackPlugin = require('html-webpack-plugin')//打包index.html主文件的插件
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   entry: './src/main.js',
@@ -20,7 +21,7 @@ module.exports = {
       {//css
         test: /\.css$/,//匹配css文件
         //使用多个loader时，是从右向左读取数组的。即先css，再style。顺序不对，打包时会出错
-        use: [ 'style-loader', 'css-loader' ]//匹配的文件应该使用的loader。
+        use: [ 'style-loader', MiniCssExtractPlugin.loader, 'css-loader' ]//匹配的文件应该使用的loader。
       },
       {//less
         test: /\.less$/,
@@ -81,6 +82,10 @@ module.exports = {
     //打包入口html文件到打包目录
     new htmlWebpackPlugin({
       template: 'index.html'//指定html作为模板打包文件
+    }),
+    //将css文件单独拎出来
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css',
     }),
   ],
 }
